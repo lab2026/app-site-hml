@@ -28,6 +28,6 @@ jobs:
 
       - name: Build Image, Tag e Push para Amazon ECR
         run: |
-          docker build -t site-cliente-toledo: v1.0 . 
-          docker tag site-cliente-toledo: v1.0 255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo:v1.0
+          docker build -t site-cliente-toledo:v1.0 . 
+          docker tag site-cliente-toledo:v1.0 255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo:v1.0
           docker push 255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo:v1.0
