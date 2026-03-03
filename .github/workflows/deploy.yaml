@@ -53,5 +53,6 @@ jobs:
               docker stop site || true
               docker rm site || true
               docker run -d -p 80:80 --name site \$IMAGE_URI:\$VERSION
+              docker ps
           EOF
           rm chave-site.pem 
