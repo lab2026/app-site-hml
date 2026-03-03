@@ -26,8 +26,11 @@ jobs:
       - name: Amazon ECR "Login" Action for GitHub Actions
         uses: aws-actions/amazon-ecr-login@v2.0.1
 
-      - name: Build Image, Tag e Push para Amazon ECR
+      - name: Build Image, Tag and Push para Amazon ECR
         run: |
-          docker build -t site-cliente-toledo:$(date + %s) . 
-          docker tag site-cliente-toledo:v1.0 255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo:site-cliente-toledo:$(date + %s)
-          docker push 255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo:$(date + %s)
+          VERSION=1.0.${{ github.run_number }}
+
+          IMAGE_URI=255982107351.dkr.ecr.us-east-2.amazonaws.com/site_hmg_toledo
+
+          docker build -t $IMAGE_URI:$VERSION .
+          docker push $IMAGE_URI:$VERSION
